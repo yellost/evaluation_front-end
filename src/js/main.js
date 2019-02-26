@@ -8,17 +8,22 @@ $(window).scroll(function() {
     }
 });
 
-    //-----burger-----//
+    //-----burger toggle-----//
 $(".burger").click(function() {
     $(".burger").toggleClass("cross");
     $(".main-nav>ul").toggleClass("hidden");
+    //-------disable scroll------//
     if ($(".main-nav>ul").hasClass("hidden")) {
         $("body").css('overflow','auto')
     } else {
         $("body").css('overflow','hidden')
     }
 });
-
+    //-----burger close on outside click-----//
+$("li.mask").click(function () {
+    $(".burger").toggleClass("cross");
+    $(".main-nav>ul").toggleClass("hidden");
+})
 
 //---------------FORMS TOGGLE-------------//
 $(".tab").click(function() {

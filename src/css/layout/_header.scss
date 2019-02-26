@@ -73,23 +73,27 @@ nav {
             padding: 15px;
             transition: .3s all ease-in-out;
             li {
+                position: relative;
+                z-index: 5;
                 list-style: none;
                 margin: 20px 0;
-            }
-            &:before {
-                content: "";
-                z-index: -1;
-                position: fixed;
-                top:0;
-                left: 0;
-                width: 100%;
-                height: 100vh;
-                background-color: rgba(0,0,0,.5);
+                &.mask {
+                    display: block;
+                    position: fixed;
+                    z-index: 0;
+                    margin: 0 0;
+                    top:0;
+                    left: 0;
+                    width: 100%;
+                    height: 100vh;
+                    background-color: rgba(0,0,0,.5);
+                }
             }
             &.hidden {
                 left: -495px;
-                &:before {
-                    width: 0;
+                li.mask {
+                    display: none;
+                    z-index: 0;
                 }
             }
             @media screen and (min-width:990px) {
@@ -163,6 +167,7 @@ header {
     color: white;
     .header-content {
         display: flex;
+        flex-wrap: wrap;
         flex-direction: column;
         justify-content: center;
         align-items: center;
@@ -185,7 +190,9 @@ header {
             color: white;
         }
         @media screen and (min-width:750px) {
+            &.home {
             flex-direction: row;
+            }
         }
     }
 
