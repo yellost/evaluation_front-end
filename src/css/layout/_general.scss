@@ -2,6 +2,21 @@ body {
     background-color: white;
     font-family: 'Poppins', sans-serif;
 }
+::selection {
+    background: $yellow;
+}
 a {
     text-decoration: none;
+}
+a.button {
+    color: white;
+    font-size: 14px;
+    font-weight: 500;
+    text-transform: uppercase;
+    background-color: $yellow;
+    padding: 10px 20px;
+    transition: .2s all ease-in-out;
+    &:hover {
+        background-color: $black;
+    }
 }
