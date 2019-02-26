@@ -34,6 +34,31 @@ section.testimonials{
         .yellow {
             color: $yellow;
         }
+        &-blog{
+            width: 360px;
+            flex-direction: column;
+            .img-wrapper {
+                overflow: hidden;
+                margin-bottom: 20px;
+            }
+            img {
+                transition: .5s all ease-in-out;
+            }
+            p {
+                color: $grey;
+            }
+            &:hover {
+                img {
+                    transform: scale(1.05);
+                }
+            }
+        }
+    }
+}
+.swiper-pagination {
+    transform: translateY(170px);
+    &.blog {
+        transform: translateY(300px);
     }
 }
 .swiper-pagination-bullet {
@@ -91,5 +116,89 @@ section.testimonials{
     @media screen and (min-width:990px) {
         flex-direction: row;
         padding: 0;
+    }
+}
+//----------section booking----------//
+.booking {
+    background-color: #f9f9f9;
+    color: $black;
+    h2 {
+        font-size: 36px;
+        line-height: 60px;
+        margin:0;
+    }
+    p {
+        color: $grey;
+        font-weight: 300;
+    }
+    .vue {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 80%;
+        
+    }
+    .filters {
+        width: 80%;
+        display: flex;
+        justify-content: space-between;
+        a {
+            color: $blue;
+            font-size: 26px;
+            font-weight: 600;
+            transition: .2s all ease-in-out;
+            &:hover {
+            color: $blueHover;
+            }
+        }
+    }
+    .blue {
+        color: $blue;
+    }
+    .travel-booking {
+        width: 80%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        p,h2 {
+            text-align: center;
+        }
+    }
+    .trips {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+        @media screen and (min-width:990px) {
+            flex-direction: row;
+        }
+        .trip {
+            margin-top: 50px;
+            width: auto;
+            display: inline-block;
+            text-align: center;
+        }
+    }
+    button {
+        width: 30%;
+        padding: 10px 0;
+        background-color: $blue;
+        color:white;
+        border-radius: 3px;
+        border: none;
+
+        &:hover {
+            background-color: $blueHover;
+        }
+    }
+    .cart {
+        padding: 30px;
+        border: 1px solid $blue;
+        border-radius: 5px;
     }
 }

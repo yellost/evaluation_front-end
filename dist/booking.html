@@ -43,21 +43,60 @@
     <Header class="parallax-window" data-parallax="scroll" data-image-src="img/hero-bg-booking.jpg">
         <div class="header-content">
             <h1>Book your holidays</h1>
-            <p><a href="index.html">Home</a> <i class="fas fa-long-arrow-alt-right"></i> <a href="booking.html">Book your holidays</a></p>
+            <p><a href="index.html">Home</a> <i class="fas fa-long-arrow-alt-right"></i> <a href="booking.html">Book
+                    your holidays</a></p>
         </div>
     </Header>
     <main>
         <section class="booking">
             <h2>Choose your destination</h2>
             <p>Your city trip is waiting for you ♥</p>
+            <div class="vue" id="app">
+                <div class="filters">
+                    <a href="#" id="France" @click.prevent="setFilterID">France</a>
+                    <a href="#" id="Spain" @click.prevent="setFilterID">Spain</a>
+                    <a href="#" id="Belgium" @click.prevent="setFilterID">Belgium</a>
+                </div>
+                <div class="travel-booking" v-for="destination in travelList"
+                    v-if="destination.countryName == filterID">
+                    <p>You've chosen : {{destination.countryName}}</p>
+                    <p>There are <span class="blue">{{destination.trips.length}}</span> city-trips available there !</p>
+                    <h2>How many people will take the trip ?</h2>
+                    <select @change="setMultiplier" name="travellers" id="travellers">
+                        <option value="0">0</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                    </select>
+                    <div class="trips">
+                        <div class="trip" v-if="multiplier != 0" v-for="trip in destination.trips">
+                            <h4>{{trip.tripName}}</h4>
+                            <img :src="trip.tripPicture" alt="trip picture">
+                            <h3>{{trip.tripUnitPrice}}€ p/p</h3>
+                            <button @click="increaseAmount" :data-price="trip.tripUnitPrice"
+                                :data-name="trip.tripName">Add to cart</button>
+                        </div>
+                    </div>
+                    <div class="total" v-if="cart.length">
+                        <h3>You'll pay <span class="blue">{{totalPrice}}€</span></h3>
+                        <div class="cart" v-if="cart.length">
+                            <h3>Your cart contains</h3>
+                            <h4 v-for="item in cart">{{item}}</h4>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </section>
 
         <section class="custom-request">
             <div class="text">
                 <h4>Did not find your Package? <br>
                     Feel free to ask us. We‘ll make it for you</h4>
-                    <p>inappropriate behavior is often laughed off as “boys will be boys,” women face higher conduct standards especially in the workplace. That’s why it’s crucial that, as women, our behavior on the job is beyond reproach. inappropriate behavior is often laughed.</p>
-                    <a href="#" class="button">request custom price</a>
+                <p>inappropriate behavior is often laughed off as “boys will be boys,” women face higher conduct
+                    standards especially in the workplace. That’s why it’s crucial that, as women, our behavior on the
+                    job is beyond reproach. inappropriate behavior is often laughed.</p>
+                <a href="#" class="button">request custom price</a>
             </div>
             <img src="img/about-img.jpg" alt="basilica">
         </section>
@@ -82,11 +121,12 @@
             <h2>newsletter</h2>
             <p>For business professionals caught between high OEM price and mediocre print and graphic output. </p>
             <form action="">
-                <input id="email" type="text" name="email" placeholder="Email Adress"><input type="image" src="../img/location-arrow-solid.svg" name="submit" alt="submit">
+                <input id="email" type="text" name="email" placeholder="Email Adress"><input type="image"
+                    src="../img/location-arrow-solid.svg" name="submit" alt="submit">
             </form>
         </div>
         <div>
-            <h2>Instaffed</h2>
+            <h2>Instafeed</h2>
             <div class="staff">
                 <img src="img/i1.jpg">
                 <img src="img/i2.jpg">
@@ -100,19 +140,24 @@
         </div>
         <div class="spacer"></div>
         <div class="social">
-            <p>Copyright ©2019 All rights reserved | This template is made with <span><i class="far fa-heart"></i></span> by <a href="#">Colorlib</a></p>
+            <p>Copyright ©2019 All rights reserved | This template is made with <span><i
+                        class="far fa-heart"></i></span> by <a href="#">Colorlib</a></p>
             <ul>
-            <li><a href="#" alt="facebook"><i class="fab fa-facebook-f"></i></a></li>
-            <li><a href="#" alt="twitter"><i class="fab fa-twitter"></i></a></li>
-            <li><a href="#" alt="dribbble"><i class="fab fa-dribbble"></i></a></li>
-            <li><a href="#" alt="behance"><i class="fab fa-behance"></i></a></li>
+                <li><a href="#" alt="facebook"><i class="fab fa-facebook-f"></i></a></li>
+                <li><a href="#" alt="twitter"><i class="fab fa-twitter"></i></a></li>
+                <li><a href="#" alt="dribbble"><i class="fab fa-dribbble"></i></a></li>
+                <li><a href="#" alt="behance"><i class="fab fa-behance"></i></a></li>
             </ul>
         </div>
     </footer>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.7/vue.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.min.js"></script>
     <script src="js/parallax.min.js"></script>
+    <script src="js/swiper.min.js"></script>
     <script src="js/main.min.js"></script>
+    <script src="js/request.min.js"></script>
 </body>
 
 </html>

@@ -37,34 +37,74 @@ $(".tab").click(function() {
 });
 
 
-//------------------SWIPER-------------------//
+//------------------SWIPER testimonials-------------------//
 $(document).ready(function () {
-    var swiper = new Swiper('.swiper-container', {
+    var swiper = new Swiper('#swiper1', {
         loop: true,
-          autoplay: {
-            delay: 5000,
-            disableOnInteraction: false,
-          },
+        slidesPerView: 2,
+        spaceBetween: 40,
+        autoplay: {
+        delay: 5000,
+        disableOnInteraction: false,
+        },
         pagination: {
             el: '.swiper-pagination',
             clickable: true,
         },
+        breakpoints: {
+            // when window width is <= 320px
+            990: {
+              slidesPerView: 1,
+              spaceBetween: 10
+            }
+        }
       });
   });
+//------------------SWIPER testimonials-------------------//
+$(document).ready(function () {
+    var swiper = new Swiper('#swiper1', {
+        loop: true,
+        slidesPerView: 2,
+        spaceBetween: 40,
+        autoplay: {
+        delay: 5000,
+        disableOnInteraction: false,
+        },
+        pagination: {
+            el: '.swiper-pagination',
+            clickable: true,
+        },
+        breakpoints: {
+            // when window width is <= 320px
+            990: {
+              slidesPerView: 1,
+              spaceBetween: 10
+            }
+        }
+      });
+});
 
-//------------------AXIOS & VUE-------------------//
-new Vue({
-    el: "#app",
-    data: {
-      travelList: [],
-      totalPrice: 0,
-      orderTypes: 0,
-      sent: false
-    },
-    created() {
-      axios.get("https://wt-4abc83e5c2056740a9e00a6e0975a49a-0.sandbox.auth0-extend.com/city-trip")
-        .then(response => {
-          this.travelList = response.data
-        })
-    },
-})
+//------------------SWIPER pics-------------------//
+$(document).ready(function () {
+    var swiper = new Swiper('#swiper2', {
+        loop: true,
+        slidesPerView: 3,
+        spaceBetween: 40,
+        centeredSlides: true,
+        autoplay: {
+            delay: 5000,
+            disableOnInteraction: false,
+        },
+        pagination: {
+            el: '.swiper-pagination',
+            clickable: true,
+        },
+        breakpoints: {
+            // when window width is <= 320px
+            990: {
+              slidesPerView: 1,
+              spaceBetween: 10
+            }
+        }
+      });
+  });
